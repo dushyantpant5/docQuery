@@ -1,5 +1,7 @@
-import OPENAI from "openai";
+import { Configuration, OpenAIApi } from "openai-edge";
 
-export const openai = new OPENAI({
+const config = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+export const openai = new OpenAIApi(config);

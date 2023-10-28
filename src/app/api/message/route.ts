@@ -9,6 +9,8 @@ import { NextRequest } from "next/server";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { Strait } from "next/font/google";
 
+export const runtime = "edge";
+
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
 
@@ -66,7 +68,7 @@ export const POST = async (req: NextRequest) => {
     content: message.text,
   }));
 
-  const response = await openai.chat.completions.create({
+  const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     temperature: 0,
     stream: true,
